@@ -8,6 +8,6 @@ public class AlreadySettedAssignmentStatusException : DomainException
     public override string Message => $"Невозможно перевести в статус '{_statusName}', так как задача уже выполнена";
     public AlreadySettedAssignmentStatusException(AssignmentStatus status)
     {
-        _statusName = status.ToString();
+        _statusName = status.Name;
     }
 }

@@ -1,14 +1,27 @@
 using System.ComponentModel;
 using Assignments.Domain.Common;
+using Assignments.Domain.Exceptions;
 
 namespace Assignments.Domain.Assignments;
 
-public enum AssignmentStatus 
+public class AssignmentStatus : BaseEntity<int>
 {
-    [Description("Not Complete")]
-    NotComplete = 1,
-    [Description("On Work")]
-    OnWork = 2,
-    [Description("Complete")]
-    Complete = 3
+    public string Name { get; private set; }
+
+    protected AssignmentStatus() { }
+    public AssignmentStatus(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+            throw new InvalidTextFormatException("name");
+
+        Name = name;
+    }
+
+    public void SetName(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+            throw new InvalidTextFormatException("name");
+
+        Name = name;
+    }
 }
