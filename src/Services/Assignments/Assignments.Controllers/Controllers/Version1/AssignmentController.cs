@@ -1,4 +1,5 @@
 using Assignments.Application.Assignments.Commands.CreateAssignment;
+using Assignments.Application.Assignments.Commands.UpdateAssignment;
 using Assignments.Application.Assignments.Dtos;
 using Assignments.Application.Assignments.Queries.GetAssignments;
 using MediatR;
@@ -32,6 +33,15 @@ public class AssignmentController : ControllerBase
     )
     {
         await _mediator.Send(new CreateAssignmentCommand(assignmentDto), cancellationToken);
+        return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update(
+        AssignmentDto assignmentDto,
+        CancellationToken cancellationToken)
+    {
+        await _mediator.Send(new UpdateAssignmentCommand(assignmentDto), cancellationToken);
         return Ok();
     }
 }

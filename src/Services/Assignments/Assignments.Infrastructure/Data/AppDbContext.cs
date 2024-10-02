@@ -41,7 +41,7 @@ public class AppDbContext : DbContext, IUnitOfWork
     }
 
     public async Task<IEnumerable<T>> QueryAsync<T>(
-        Expression<Func<T, bool>> expression = null,
+        Expression<Func<T, bool>> expression = null!,
         CancellationToken cancellationToken = default
     )
         where T : class, IBaseEntity

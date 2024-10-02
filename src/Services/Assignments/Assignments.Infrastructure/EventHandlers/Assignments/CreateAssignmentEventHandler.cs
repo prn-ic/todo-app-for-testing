@@ -16,7 +16,8 @@ public class CreateAssignmentEventHandler : INotificationHandler<CreateAssignmen
 
     public async Task Handle(CreateAssignmentEvent notification, CancellationToken cancellationToken)
     {
-        AssignmentStatus status = await _context.AssignmentStatuses.FindAsync(notification.Assignment.Status.Id)
+        AssignmentStatus status = await _context.AssignmentStatuses
+            .FindAsync(notification.Assignment.Status!.Id)
             ?? throw new InvalidDataException("not found");
         notification.Assignment.SetStatus(status);
         await _context.AddAsync(notification.Assignment);

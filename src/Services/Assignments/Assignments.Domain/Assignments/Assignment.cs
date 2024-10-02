@@ -8,7 +8,7 @@ public class Assignment : BaseEntity<int>
 {
     public string Name { get; private set; }
     public string Description { get; private set; }
-    public AssignmentStatus? Status { get; private set; }
+    public AssignmentStatus Status { get; private set; }
     protected Assignment() { }
     public Assignment(string name, string description, AssignmentStatus status)
     {
@@ -38,7 +38,7 @@ public class Assignment : BaseEntity<int>
 
     public void SetStatus(AssignmentStatus status)
     {
-        CheckStatusEquality(status);
+        //CheckStatusEquality(status);
         Status = status;
     }
 

@@ -6,7 +6,7 @@ namespace Assignments.Application.Common.Contracts;
 public interface IUnitOfWork
 {
     Task<IEnumerable<T>> QueryAsync<T>(
-        Expression<Func<T, bool>> expression = null,
+        Expression<Func<T, bool>> expression = null!,
         CancellationToken cancellationToken = default
     ) where T: class, IBaseEntity;
     Task<int> SaveChangesAsync(
