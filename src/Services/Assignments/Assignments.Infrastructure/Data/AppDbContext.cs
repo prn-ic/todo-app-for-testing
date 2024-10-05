@@ -50,4 +50,10 @@ public class AppDbContext : DbContext, IUnitOfWork
             ? await Set<T>().Where(expression).ToListAsync(cancellationToken)
             : await Set<T>().ToListAsync(cancellationToken);
     }
+
+    public async Task<T?> QuerySingleAsync<T>(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default)
+        where T : class, IBaseEntity
+    {
+        return (await QueryAsync<T>(expression, cancellationToken)).FirstOrDefault();
+    }
 }

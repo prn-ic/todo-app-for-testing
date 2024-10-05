@@ -38,7 +38,7 @@ public class Assignment : BaseEntity<int>
 
     public void SetStatus(AssignmentStatus status)
     {
-        //CheckStatusEquality(status);
+        CheckStatusEquality(status);
         Status = status;
     }
 
